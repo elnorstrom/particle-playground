@@ -61,7 +61,6 @@ export class DrawParticles {
     }
 
     set trails(value) {
-        console.log(value);
         this._trails = value;
     }
 
@@ -70,7 +69,6 @@ export class DrawParticles {
     }
 
     set fading(value) {
-        console.log(value);
         this._fading = value;
     }
 

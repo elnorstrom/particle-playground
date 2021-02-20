@@ -8,7 +8,80 @@
     </head>
     <body>
         <main id="main">
-            <canvas id="canvas"></canvas>
+            <canvas id="canvas" style="touch-action: none"></canvas>
+
+            <div class="settings">
+                <label for="size-input" class="input-label"> Size </label>
+                <input
+                    id="size-input"
+                    class="slider"
+                    type="range"
+                    min="1"
+                    max="100"
+                    name="Size"
+                />
+
+                <label for="speed" class="input-label"> Speed </label>
+
+                <input
+                    id="speed-input"
+                    class="slider"
+                    type="range"
+                    min="0.1"
+                    step="0.1"
+                    max="100.0"
+                    name="Speed"
+                />
+
+                <label for="number-of-particles-input" class="input-label">
+                    Number of particles
+                </label>
+
+                <input
+                    id="number-of-particles-input"
+                    class="slider"
+                    type="range"
+                    min="1"
+                    max="50"
+                    name="Number of particles"
+                />
+
+                <label for="connected-input" class="input-label">
+                    Connected
+                </label>
+
+                <input
+                    id="connected-input"
+                    class="slider"
+                    type="checkbox"
+                    name="connected"
+                    checked
+                />
+
+                <button id="clear-button" class="clear-button">Clear</button>
+
+                <label for="trails" class="input-label"> Trails </label>
+
+                <input
+                    id="trails"
+                    class="slider"
+                    type="checkbox"
+                    name="Trails"
+                    checked
+                />
+
+                <label for="fading" class="input-label" id="fading-label">
+                    Fading
+                </label>
+
+                <input
+                    id="fading"
+                    class="slider"
+                    type="checkbox"
+                    name="Fading"
+                    checked
+                />
+            </div>
         </main>
 
         <script type="module" src="draw-particle.js"></script>

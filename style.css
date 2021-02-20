@@ -9,3 +9,19 @@ main {
     top: 0;
     left: 0;
 }
+
+.slider {
+    position: relative;
+    z-index: 2;
+}
+
+.input-label {
+    position: relative;
+    z-index: 2;
+    color: white;
+}
+
+.clear-button {
+    z-index: 3;
+    position: relative;
+}

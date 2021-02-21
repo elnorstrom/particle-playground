@@ -10,7 +10,15 @@
         <main id="main">
             <canvas id="canvas" style="touch-action: none"></canvas>
 
-            <div class="settings">
+            <div id="settings" class="settings hide-settings">
+                <div class="settings-toggle-container">
+                    <button id="settings-toggle" class="settings-toggle">
+                        <img
+                            src="./images/tune-white-18dp.svg">
+                        </img>
+                    </button>
+                </div>
+
                 <div class="settings__row">
                     <div class="settings__input-and-label">
                         <label for="size-input" class="input-label">
@@ -49,7 +57,7 @@
                                 class="input-label"
                                 id="number-of-particles-input-label"
                             >
-                                Particle quantity
+                                <span>Particle quantity</span>
                             </label>
 
                             <input

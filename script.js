@@ -15,6 +15,8 @@ const fadingCheckbox = document.getElementById('fading');
 const numberOfParticlesInputLabel = document.getElementById(
     'number-of-particles-input-label'
 );
+const settings = document.getElementById('settings');
+const settingsToggle = document.getElementById('settings-toggle');
 
 const allInputs = [
     sizeInput,
@@ -22,9 +24,17 @@ const allInputs = [
     numberOfParticlesInput,
     connected,
     clearButton,
+    settingsToggle,
 ];
 
 document.addEventListener('keydown', handleKeyboardClick);
+settingsToggle.addEventListener('click', toggleSettings);
+
+function toggleSettings(e) {
+    e.preventDefault();
+    settingsToggle.blur();
+    settings.classList.toggle('hide-settings');
+}
 
 sizeInput.value = particleDrawer.size;
 speedInput.value = particleDrawer.speed;

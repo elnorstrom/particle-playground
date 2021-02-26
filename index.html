@@ -3,96 +3,88 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Canvas playground</title>
-        <link rel="stylesheet" href="style.css" />
+        <title>Particle Playground</title>
+        <link rel="stylesheet" href="style.css" type="text/css" />
     </head>
     <body>
         <main id="main">
-            <canvas id="canvas" style="touch-action: none"></canvas>
+            <canvas id="canvas"></canvas>
 
-            <div id="settings" class="settings hide-settings">
-                <div class="settings-toggle-container">
+            <div id="settings" class="settings" style="touch-action: none">
+                <div class="settings__toggle-container">
                     <button id="settings-toggle" class="settings-toggle">
-                        <img
-                            src="./images/tune-white-18dp.svg">
-                        </img>
+                        <img src="./images/tune-white-18dp.svg" />
                     </button>
                 </div>
 
-                <div class="settings__row">
-                    <div class="settings__input-and-label">
-                        <label for="size-input" class="input-label">
-                            Size
-                        </label>
-                        <input
-                            id="size-input"
-                            class="slider"
-                            type="range"
-                            min="1"
-                            max="100"
-                            name="Size"
-                        />
-                    </div>
-
-                    <div class="settings__input-and-label">
-                        <label for="speed" class="input-label"> Speed </label>
-
-                        <input
-                            id="speed-input"
-                            class="slider"
-                            type="range"
-                            min="0.1"
-                            step="0.1"
-                            max="100.0"
-                            name="Speed"
-                        />
-                    </div>
-                </div>
-
-                <div class="settings__row">
-                    <div class="settings__row">
+                <div class="settings__sections">
+                    <div class="settings__section">
                         <div class="settings__input-and-label">
+                            <label for="size-input" class="input-label">
+                                Size
+                            </label>
+                            <input
+                                id="size-input"
+                                type="range"
+                                min="1"
+                                max="100"
+                                name="Size"
+                            />
+                            <output for="size-input"></output>
+                        </div>
+
+                        <div class="settings__input-and-label">
+                            <label for="speed" class="input-label">
+                                Speed
+                            </label>
+
+                            <input
+                                id="speed-input"
+                                type="range"
+                                min="0.1"
+                                step="0.1"
+                                max="100.0"
+                                name="Speed"
+                            />
+                        </div>
+                    </div>
+
+                    <div class="settings__section">
+                        <div
+                            class="settings__input-and-label settings__number-of-particles-container"
+                        >
                             <label
                                 for="number-of-particles-input"
                                 class="input-label"
                                 id="number-of-particles-input-label"
                             >
-                                <span>Particle quantity</span>
+                                Particle quantity
                             </label>
 
                             <input
                                 id="number-of-particles-input"
-                                class="slider"
                                 type="range"
                                 min="1"
                                 max="50"
                                 name="Number of particles"
                             />
-
-                            <output
-                                for="number-of-particles-input"
-                                name="number-result"
-                            ></output>
                         </div>
-                    </div>
 
-                    <div class="settings__row">
-                        <div class="settings__row">
-                            <div class="settings__input-and-label">
+                        <div class="settings__checkbox-container">
+                            <div class="settings__checkbox-and-label">
                                 <label for="trails" class="input-label">
                                     Trails
                                 </label>
 
                                 <input
                                     id="trails"
-                                    class="slider"
                                     type="checkbox"
                                     name="Trails"
                                     checked
                                 />
                             </div>
 
-                            <div class="settings__input-and-label">
+                            <div class="settings__checkbox-and-label">
                                 <label
                                     for="fading"
                                     class="input-label"
@@ -103,16 +95,13 @@
 
                                 <input
                                     id="fading"
-                                    class="slider"
                                     type="checkbox"
                                     name="Fading"
                                     checked
                                 />
                             </div>
-                        </div>
 
-                        <div class="settings__row">
-                            <div class="settings__input-and-label">
+                            <div class="settings__checkbox-and-label">
                                 <label
                                     for="connected-input"
                                     class="input-label"
@@ -122,13 +111,17 @@
 
                                 <input
                                     id="connected-input"
-                                    class="slider"
                                     type="checkbox"
                                     name="connected"
                                     checked
                                 />
                             </div>
-                            <div class="clear-container">
+                            <div
+                                class="clear-container settings__checkbox-and-label"
+                            >
+                                <label for="clear-button" class="input-label"
+                                    >Clear</label
+                                >
                                 <button id="clear-button" class="clear-button">
                                     X
                                 </button>

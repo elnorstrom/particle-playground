@@ -115,12 +115,12 @@ main {
     text-align: left;
 }
 
-.clear-container {
+.settings__clear-button-container {
     display: flex;
     justify-content: flex-start;
 }
 
-.clear-button {
+.settings__clear-button {
     -webkit-appearance: none;
     height: 22px;
     width: 40px;

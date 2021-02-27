@@ -1,17 +1,17 @@
 export class DrawParticles {
-    _size = 15;
-    _speed = 3;
-    _numberOfParticles = 5;
-    _connectedParticles = false;
-    _trails = true;
-    _fading = true;
-
     constructor(canvas) {
         /** @type {HTMLElement} */
         this.canvas = canvas;
 
         /** @type {CanvasRenderingContext2D} */
-        this.ctx = canvas.getContext("2d");
+        this.ctx = canvas.getContext('2d');
+
+        this._size = 15;
+        this._speed = 3;
+        this._numberOfParticles = 5;
+        this._connectedParticles = false;
+        this._trails = true;
+        this._fading = true;
 
         this.canvas.width = window.innerWidth;
         this.canvas.height = window.innerHeight;
@@ -82,15 +82,23 @@ export class DrawParticles {
     }
 
     addListeners() {
-        window.addEventListener("resize", function () {
+        window.addEventListener('resize', function () {
             this.canvas.width = window.innerWidth;
             this.canvas.height = window.innerHeight;
         });
-        this.canvas.addEventListener("click", (e) => this.addParticles(e));
-        this.canvas.addEventListener("mousemove", (e) => this.addParticles(e));
-        this.canvas.addEventListener("mousedown", (e) => this.addParticles(e));
-        this.canvas.addEventListener("touchmove", (e) => this.addParticles(e));
-        // this.canvas.addEventListener("touchstart", (e) => this.addParticles(e));
+        this.canvas.addEventListener('click', (e) => this.addParticles(e));
+        this.canvas.addEventListener('mousemove', (e) => this.addParticles(e));
+        this.canvas.addEventListener('mousedown', (e) => this.addParticles(e));
+        this.canvas.addEventListener(
+            'touchstart',
+            (e) => this.addParticles(e),
+            {
+                passive: false,
+            }
+        );
+        this.canvas.addEventListener('touchmove', (e) => this.addParticles(e), {
+            passive: false,
+        });
     }
 
     addParticles(event) {
@@ -100,31 +108,16 @@ export class DrawParticles {
         this.y = !isNaN(event.y) ? event.y : event.targetTouches[0].clientY;
 
         for (let i = 0; i < this.numberOfParticles; i++) {
-            if (this.connectedParticles) {
-                if (this.particlesArray.length < 100) {
-                    this.particlesArray.push(
-                        new Particle(
-                            this.x,
-                            this.y,
-                            this.ctx,
-                            this.hue,
-                            this.size,
-                            this.speed
-                        )
-                    );
-                }
-            } else {
-                this.particlesArray.push(
-                    new Particle(
-                        this.x,
-                        this.y,
-                        this.ctx,
-                        this.hue,
-                        this.size,
-                        this.speed
-                    )
-                );
-            }
+            this.particlesArray.push(
+                new Particle(
+                    this.x,
+                    this.y,
+                    this.ctx,
+                    this.hue,
+                    this.size,
+                    this.speed
+                )
+            );
         }
 
         if (this.animationStopped) {
@@ -150,7 +143,6 @@ export class DrawParticles {
             if (this.particlesArray[i].size <= 0.3) {
                 this.particlesArray.splice(i, 1);
                 i--;
-                this.particlesTotal = this.particlesArray.length;
             }
         }
     }
@@ -179,25 +171,27 @@ export class DrawParticles {
         }
     }
 
-    clearCanvas() {
-        this.particlesArray = [];
-        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-    }
-
     animate() {
         if (this.fading) {
-            this.ctx.fillStyle = "rgba(0,0,0,0.02)";
+            this.ctx.fillStyle = 'rgba(0,0,0,0.02)';
             this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
         }
+
         if (!this.trails) {
             this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         }
+
         this.handleParticles();
         this.hue += 0.5;
 
         if (!this.animationStopped) {
             requestAnimationFrame(this.animate);
         }
+    }
+
+    clearCanvas() {
+        this.particlesArray = [];
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     }
 }
 

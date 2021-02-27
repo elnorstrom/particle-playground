@@ -10,9 +10,12 @@
         <main id="main">
             <canvas id="canvas"></canvas>
 
-            <div id="settings" class="settings" style="touch-action: none">
-                <div class="settings__toggle-container">
-                    <button id="settings-toggle" class="settings-toggle">
+            <div id="settings" class="settings">
+                <div class="settings__settings-toggle-container">
+                    <button
+                        id="settings-toggle"
+                        class="settings__settings-toggle"
+                    >
                         <img src="./images/tune-white-18dp.svg" />
                     </button>
                 </div>
@@ -20,7 +23,10 @@
                 <div class="settings__sections">
                     <div class="settings__section">
                         <div class="settings__input-and-label">
-                            <label for="size-input" class="input-label">
+                            <label
+                                for="size-input"
+                                class="settings__input-label"
+                            >
                                 Size
                             </label>
                             <input
@@ -28,13 +34,13 @@
                                 type="range"
                                 min="1"
                                 max="100"
-                                name="Size"
+                                name="size"
                             />
                             <output for="size-input"></output>
                         </div>
 
                         <div class="settings__input-and-label">
-                            <label for="speed" class="input-label">
+                            <label for="speed" class="settings__input-label">
                                 Speed
                             </label>
 
@@ -44,42 +50,43 @@
                                 min="0.1"
                                 step="0.1"
                                 max="100.0"
-                                name="Speed"
+                                name="speed"
                             />
                         </div>
                     </div>
 
                     <div class="settings__section">
-                        <div
-                            class="settings__input-and-label settings__number-of-particles-container"
-                        >
+                        <div class="settings__input-and-label">
                             <label
-                                for="number-of-particles-input"
-                                class="input-label"
-                                id="number-of-particles-input-label"
+                                for="quantity-input"
+                                class="settings__input-label"
+                                id="quantity-input-label"
                             >
                                 Particle quantity
                             </label>
 
                             <input
-                                id="number-of-particles-input"
+                                id="quantity-input"
                                 type="range"
                                 min="1"
                                 max="50"
-                                name="Number of particles"
+                                name="quantity"
                             />
                         </div>
 
                         <div class="settings__checkbox-container">
                             <div class="settings__checkbox-and-label">
-                                <label for="trails" class="input-label">
+                                <label
+                                    for="trails"
+                                    class="settings__input-label"
+                                >
                                     Trails
                                 </label>
 
                                 <input
                                     id="trails"
                                     type="checkbox"
-                                    name="Trails"
+                                    name="trails"
                                     checked
                                 />
                             </div>
@@ -87,7 +94,7 @@
                             <div class="settings__checkbox-and-label">
                                 <label
                                     for="fading"
-                                    class="input-label"
+                                    class="settings__input-label"
                                     id="fading-label"
                                 >
                                     Fade
@@ -96,30 +103,32 @@
                                 <input
                                     id="fading"
                                     type="checkbox"
-                                    name="Fading"
+                                    name="fading"
                                     checked
                                 />
                             </div>
 
                             <div class="settings__checkbox-and-label">
                                 <label
-                                    for="connected-input"
-                                    class="input-label"
+                                    for="lines-input"
+                                    class="settings__input-label"
                                 >
                                     Lines
                                 </label>
 
                                 <input
-                                    id="connected-input"
+                                    id="lines-input"
                                     type="checkbox"
-                                    name="connected"
+                                    name="lines"
                                     checked
                                 />
                             </div>
                             <div
                                 class="clear-container settings__checkbox-and-label"
                             >
-                                <label for="clear-button" class="input-label"
+                                <label
+                                    for="clear-button"
+                                    class="settings__input-label"
                                     >Clear</label
                                 >
                                 <button id="clear-button" class="clear-button">

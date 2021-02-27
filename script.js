@@ -5,25 +5,23 @@ const particleDrawer = new DrawParticles(canvas);
 
 const sizeInput = document.getElementById('size-input');
 const speedInput = document.getElementById('speed-input');
-const numberOfParticlesInput = document.getElementById(
-    'number-of-particles-input'
-);
-const connected = document.getElementById('connected-input');
+const quantityInput = document.getElementById('quantity-input');
+const linesCheckbox = document.getElementById('lines-input');
 const clearButton = document.getElementById('clear-button');
 const trailsCheckbox = document.getElementById('trails');
 const fadingCheckbox = document.getElementById('fading');
-const numberOfParticlesInputLabel = document.getElementById(
-    'number-of-particles-input-label'
-);
+const quantityInputLabel = document.getElementById('quantity-input-label');
 const settings = document.getElementById('settings');
 const settingsToggle = document.getElementById('settings-toggle');
 
 const allInputs = [
     sizeInput,
     speedInput,
-    numberOfParticlesInput,
-    connected,
+    quantityInput,
+    linesCheckbox,
     clearButton,
+    trailsCheckbox,
+    fadingCheckbox,
     settingsToggle,
 ];
 
@@ -33,15 +31,15 @@ settingsToggle.addEventListener('click', toggleSettings);
 function toggleSettings(e) {
     e.preventDefault();
     settingsToggle.blur();
-    settings.classList.toggle('hide-settings');
+    settings.classList.toggle('settings--hide');
 }
 
 sizeInput.value = particleDrawer.size;
 speedInput.value = particleDrawer.speed;
-connected.checked = particleDrawer.connectedParticles;
+linesCheckbox.checked = particleDrawer.lines;
 trailsCheckbox.checked = particleDrawer.trails;
-numberOfParticlesInput.value = particleDrawer.numberOfParticles;
-numberOfParticlesInputLabel.innerText = `Particle quantity (${particleDrawer.numberOfParticles})`;
+quantityInput.value = particleDrawer.quantity;
+quantityInputLabel.innerText = `Particle quantity (${particleDrawer.quantity})`;
 
 sizeInput.oninput = (e) => {
     particleDrawer.size = e.target.value;
@@ -51,19 +49,19 @@ speedInput.oninput = (e) => {
     particleDrawer.speed = e.target.value;
 };
 
-numberOfParticlesInput.oninput = (e) => {
-    numberOfParticlesInputLabel.innerText = `Particle quantity (${e.target.value})`;
-    particleDrawer.numberOfParticles = e.target.value;
+quantityInput.oninput = (e) => {
+    quantityInputLabel.innerText = `Particle quantity (${e.target.value})`;
+    particleDrawer.quantity = e.target.value;
 };
 
-connected.onchange = (e) => {
-    particleDrawer.connectedParticles = connected.checked;
-    numberOfParticlesInputLabel.innerText = `Particle quantity (${particleDrawer.numberOfParticles})`;
+linesCheckbox.onchange = (e) => {
+    particleDrawer.lines = linesCheckbox.checked;
+    quantityInputLabel.innerText = `Particle quantity (${particleDrawer.quantity})`;
 
-    numberOfParticlesInput.max = connected.checked ? 5 : 50;
+    quantityInput.max = linesCheckbox.checked ? 5 : 50;
 
-    if (connected.checked) {
-        numberOfParticlesInput.value = particleDrawer.numberOfParticles;
+    if (linesCheckbox.checked) {
+        quantityInput.value = particleDrawer.quantity;
     }
 };
 

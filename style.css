@@ -1,4 +1,37 @@
+body {
+    --settings-background: rgb(41, 41, 41, 0.5);
+    --input-color: rgb(214, 214, 214);
+    --clear-button-color: rgb(156, 0, 0);
+    --input-border-radius: 1px;
+
+    height: 100%;
+    width: 100%;
+    font-family: monospace;
+    padding: 0;
+    margin: 0;
+}
+
 main {
+    width: 100%;
+    height: 100%;
+}
+
+@media (max-width: 375px) {
+    .settings__sections {
+        flex-direction: column;
+    }
+    .settings__section {
+        flex-direction: column;
+    }
+    .settings__checkbox-container {
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 799px) {
+    .settings__section {
+        flex-direction: column;
+    }
 }
 
 #canvas {
@@ -8,20 +41,183 @@ main {
     height: 100%;
     top: 0;
     left: 0;
+    z-index: 1;
 }
 
-.slider {
-    position: relative;
-    z-index: 2;
-}
-
-.input-label {
-    position: relative;
-    z-index: 2;
-    color: white;
-}
-
-.clear-button {
+.settings {
+    touch-action: none;
+    transition: sliding-vertically, 0.25s ease-in-out;
+    position: absolute;
+    width: 100%;
+    padding-bottom: 34px;
+    max-width: 1440px;
+    background: var(--settings-background);
     z-index: 3;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.settings--hide {
+    transform: translateY(100%);
+}
+
+.settings__settings-toggle-container {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    align-items: flex-end;
     position: relative;
+    z-index: 3;
+    padding: none;
+    margin: none;
+}
+
+.settings__settings-toggle {
+    -webkit-appearance: none;
+    height: 32px;
+    width: 48px;
+    margin-top: -32px;
+    margin-right: 16px;
+    border-radius: 2px 2px 0 0;
+    border: none;
+    background: var(--settings-background);
+    color: white;
+    cursor: pointer;
+    z-index: 3;
+    overflow: hidden;
+}
+
+.settings__sections {
+    display: flex;
+}
+
+.settings__section {
+    display: flex;
+    flex: 1;
+    margin-bottom: 2px;
+}
+
+.settings__input-and-label {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin-left: 8px;
+    margin-right: 8px;
+    margin-top: 24px;
+}
+
+.settings__input-label {
+    color: white;
+    margin-bottom: 12px;
+    text-align: left;
+}
+
+.settings__clear-button-container {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.settings__clear-button {
+    -webkit-appearance: none;
+    height: 22px;
+    width: 40px;
+    border-radius: var(--input-border-radius);
+    border: none;
+    margin: -5px 0px 0px 1px;
+    border-radius: var(--input-border-radius);
+    background-color: var(--clear-button-color);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.settings__checkbox-container {
+    display: flex;
+    margin-bottom: 2px;
+    margin-left: 8px;
+    margin-right: 8px;
+    flex: 1;
+}
+
+.settings__checkbox-and-label {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+    margin-right: 8px;
+    margin-top: 24px;
+}
+
+input[type='range'] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 100%;
+    outline: none;
+    height: 2px;
+    border-radius: 5px;
+    background: var(--input-color);
+    margin-top: 4px;
+}
+
+input[type='range']::-moz-range-thumb {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-apppearace: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    background: var(--input-color);
+    border: 2px solid var(--input-color);
+    cursor: pointer;
+}
+
+input[type='range']::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    -moz-apppearace: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    background: var(--input-color);
+    border: 2px solid var(--input-color);
+    cursor: pointer;
+}
+
+input[type='checkbox'] {
+    -webkit-appearance: none;
+    -moz-apppearace: none;
+    width: 20px;
+    height: 20px;
+    border-radius: var(--input-border-radius);
+    border: 2px solid var(--input-color);
+    margin: -4px 0px 0px 1px;
+    outline: none;
+    background: none !important;
+    cursor: pointer;
+}
+
+input[type='checkbox']:checked:before {
+    content: '';
+    display: block;
+    width: 16px;
+    height: 16px;
+}
+
+input[type='checkbox']:checked:after {
+    content: '';
+    display: block;
+    width: 10px;
+    height: 10px;
+    background: var(--input-color);
+    margin-top: -13px;
+    margin-left: 3px;
+}
+
+input[type='checkbox']:disabled {
+    opacity: 0.4;
 }

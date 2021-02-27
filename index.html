@@ -3,84 +3,144 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Canvas playground</title>
-        <link rel="stylesheet" href="style.css" />
+        <title>Particle Playground</title>
+        <link rel="stylesheet" href="style.css" type="text/css" />
     </head>
     <body>
         <main id="main">
-            <canvas id="canvas" style="touch-action: none"></canvas>
+            <canvas id="canvas"></canvas>
 
-            <div class="settings">
-                <label for="size-input" class="input-label"> Size </label>
-                <input
-                    id="size-input"
-                    class="slider"
-                    type="range"
-                    min="1"
-                    max="100"
-                    name="Size"
-                />
+            <div id="settings" class="settings">
+                <div class="settings__settings-toggle-container">
+                    <button
+                        id="settings-toggle"
+                        class="settings__settings-toggle"
+                    >
+                        <img src="./images/tune-white-18dp.svg" />
+                    </button>
+                </div>
 
-                <label for="speed" class="input-label"> Speed </label>
+                <div class="settings__sections">
+                    <div class="settings__section">
+                        <div class="settings__input-and-label">
+                            <label
+                                for="size-input"
+                                class="settings__input-label"
+                            >
+                                Size
+                            </label>
+                            <input
+                                id="size-input"
+                                type="range"
+                                min="1"
+                                max="100"
+                                name="size"
+                            />
+                            <output for="size-input"></output>
+                        </div>
 
-                <input
-                    id="speed-input"
-                    class="slider"
-                    type="range"
-                    min="0.1"
-                    step="0.1"
-                    max="100.0"
-                    name="Speed"
-                />
+                        <div class="settings__input-and-label">
+                            <label for="speed" class="settings__input-label">
+                                Speed
+                            </label>
 
-                <label for="number-of-particles-input" class="input-label">
-                    Number of particles
-                </label>
+                            <input
+                                id="speed-input"
+                                type="range"
+                                min="0.1"
+                                step="0.1"
+                                max="100.0"
+                                name="speed"
+                            />
+                        </div>
+                    </div>
 
-                <input
-                    id="number-of-particles-input"
-                    class="slider"
-                    type="range"
-                    min="1"
-                    max="50"
-                    name="Number of particles"
-                />
+                    <div class="settings__section">
+                        <div class="settings__input-and-label">
+                            <label
+                                for="quantity-input"
+                                class="settings__input-label"
+                                id="quantity-input-label"
+                            >
+                                Particle quantity
+                            </label>
 
-                <label for="connected-input" class="input-label">
-                    Connected
-                </label>
+                            <input
+                                id="quantity-input"
+                                type="range"
+                                min="1"
+                                max="50"
+                                name="quantity"
+                            />
+                        </div>
 
-                <input
-                    id="connected-input"
-                    class="slider"
-                    type="checkbox"
-                    name="connected"
-                    checked
-                />
+                        <div class="settings__checkbox-container">
+                            <div class="settings__checkbox-and-label">
+                                <label
+                                    for="trails"
+                                    class="settings__input-label"
+                                >
+                                    Trails
+                                </label>
 
-                <button id="clear-button" class="clear-button">Clear</button>
+                                <input
+                                    id="trails"
+                                    type="checkbox"
+                                    name="trails"
+                                    checked
+                                />
+                            </div>
 
-                <label for="trails" class="input-label"> Trails </label>
+                            <div class="settings__checkbox-and-label">
+                                <label
+                                    for="fading"
+                                    class="settings__input-label"
+                                    id="fading-label"
+                                >
+                                    Fade
+                                </label>
 
-                <input
-                    id="trails"
-                    class="slider"
-                    type="checkbox"
-                    name="Trails"
-                    checked
-                />
+                                <input
+                                    id="fading"
+                                    type="checkbox"
+                                    name="fading"
+                                    checked
+                                />
+                            </div>
 
-                <label for="fading" class="input-label" id="fading-label">
-                    Fading
-                </label>
+                            <div class="settings__checkbox-and-label">
+                                <label
+                                    for="lines-input"
+                                    class="settings__input-label"
+                                >
+                                    Lines
+                                </label>
 
-                <input
-                    id="fading"
-                    class="slider"
-                    type="checkbox"
-                    name="Fading"
-                    checked
-                />
+                                <input
+                                    id="lines-input"
+                                    type="checkbox"
+                                    name="lines"
+                                    checked
+                                />
+                            </div>
+                            <div
+                                class="settings__clear-button-container settings__checkbox-and-label"
+                            >
+                                <label
+                                    for="clear-button"
+                                    class="settings__input-label"
+                                    >Clear</label
+                                >
+                                <button
+                                    id="clear-button"
+                                    class="settings__clear-button"
+                                >
+                                    X
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </main>
 

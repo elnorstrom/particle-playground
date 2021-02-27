@@ -8,8 +8,8 @@ export class DrawParticles {
 
         this._size = 15;
         this._speed = 3;
-        this._numberOfParticles = 5;
-        this._connectedParticles = false;
+        this._quantity = 5;
+        this._lines = false;
         this._trails = true;
         this._fading = true;
 
@@ -41,23 +41,24 @@ export class DrawParticles {
         return this._speed;
     }
 
-    set numberOfParticles(value) {
-        this._numberOfParticles = value;
+    set quantity(value) {
+        this._quantity = value;
     }
 
-    get numberOfParticles() {
-        return this._numberOfParticles;
+    get quantity() {
+        return this._quantity;
     }
 
-    set connectedParticles(value) {
-        this._connectedParticles = value;
+    set lines(value) {
+        this._lines = value;
+
         if (value) {
-            this.numberOfParticles = 5;
+            this.quantity = 5;
         }
     }
 
-    get connectedParticles() {
-        return this._connectedParticles;
+    get lines() {
+        return this._lines;
     }
 
     set trails(value) {
@@ -107,7 +108,7 @@ export class DrawParticles {
         this.x = !isNaN(event.x) ? event.x : event.targetTouches[0].clientX;
         this.y = !isNaN(event.y) ? event.y : event.targetTouches[0].clientY;
 
-        for (let i = 0; i < this.numberOfParticles; i++) {
+        for (let i = 0; i < this.quantity; i++) {
             this.particlesArray.push(
                 new Particle(
                     this.x,
@@ -136,7 +137,7 @@ export class DrawParticles {
             this.particlesArray[i].update();
             this.particlesArray[i].draw();
 
-            if (this.connectedParticles) {
+            if (this.lines) {
                 this.addLines(i);
             }
 

@@ -103,7 +103,7 @@ main {
 .settings__input-and-label {
     display: flex;
     flex-direction: column;
-    flex: 1;
+    flex: auto;
     margin-left: 8px;
     margin-right: 8px;
     margin-top: 24px;
@@ -141,7 +141,7 @@ main {
     margin-bottom: 2px;
     margin-left: 8px;
     margin-right: 8px;
-    flex: 1;
+    flex: auto;
 }
 
 .settings__checkbox-and-label {

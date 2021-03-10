@@ -1,4 +1,4 @@
-export class DrawParticles {
+export class ParticleGenerator {
     constructor(canvas) {
         /** @type {HTMLElement} */
         this.canvas = canvas;

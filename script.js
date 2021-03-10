@@ -1,7 +1,7 @@
-import { DrawParticles } from './draw-particle.js';
+import { ParticleGenerator } from './particle-generator.js';
 
 const canvas = document.getElementById('canvas');
-const particleDrawer = new DrawParticles(canvas);
+const particleGenerator = new ParticleGenerator(canvas);
 
 const sizeInput = document.getElementById('size-input');
 const speedInput = document.getElementById('speed-input');
@@ -34,58 +34,58 @@ function toggleSettings(e) {
     settings.classList.toggle('settings--hide');
 }
 
-sizeInput.value = particleDrawer.size;
-speedInput.value = particleDrawer.speed;
-linesCheckbox.checked = particleDrawer.lines;
-trailsCheckbox.checked = particleDrawer.trails;
-quantityInput.value = particleDrawer.quantity;
-quantityInputLabel.innerText = `Particle quantity (${particleDrawer.quantity})`;
+sizeInput.value = particleGenerator.size;
+speedInput.value = particleGenerator.speed;
+linesCheckbox.checked = particleGenerator.lines;
+trailsCheckbox.checked = particleGenerator.trails;
+quantityInput.value = particleGenerator.quantity;
+quantityInputLabel.innerText = `Particle quantity (${particleGenerator.quantity})`;
 
 sizeInput.oninput = (e) => {
-    particleDrawer.size = e.target.value;
+    particleGenerator.size = e.target.value;
 };
 
 speedInput.oninput = (e) => {
-    particleDrawer.speed = e.target.value;
+    particleGenerator.speed = e.target.value;
 };
 
 quantityInput.oninput = (e) => {
     quantityInputLabel.innerText = `Particle quantity (${e.target.value})`;
-    particleDrawer.quantity = e.target.value;
+    particleGenerator.quantity = e.target.value;
 };
 
 linesCheckbox.onchange = (e) => {
-    particleDrawer.lines = linesCheckbox.checked;
-    quantityInputLabel.innerText = `Particle quantity (${particleDrawer.quantity})`;
+    particleGenerator.lines = linesCheckbox.checked;
+    quantityInputLabel.innerText = `Particle quantity (${particleGenerator.quantity})`;
 
     quantityInput.max = linesCheckbox.checked ? 5 : 50;
 
     if (linesCheckbox.checked) {
-        quantityInput.value = particleDrawer.quantity;
+        quantityInput.value = particleGenerator.quantity;
     }
 };
 
 clearButton.onclick = (e) => {
-    particleDrawer.clearCanvas();
+    particleGenerator.clearCanvas();
 };
 
 trailsCheckbox.onclick = (e) => {
-    particleDrawer.trails = trailsCheckbox.checked;
+    particleGenerator.trails = trailsCheckbox.checked;
     fadingCheckbox.disabled = !trailsCheckbox.checked;
 };
 
 fadingCheckbox.onclick = (e) => {
-    particleDrawer.fading = fadingCheckbox.checked;
+    particleGenerator.fading = fadingCheckbox.checked;
 };
 
 function handleKeyboardClick(e) {
     allInputs.forEach((input) => input.blur());
 
     if (e.keyCode === 32) {
-        particleDrawer.animationStopped = !particleDrawer.animationStopped;
+        particleGenerator.animationStopped = !particleGenerator.animationStopped;
 
-        if (!particleDrawer.animationStopped) {
-            particleDrawer.animate();
+        if (!particleGenerator.animationStopped) {
+            particleGenerator.animate();
         }
     }
 }

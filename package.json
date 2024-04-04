@@ -1,0 +1,10 @@
+{
+  "name": "particle-playground",
+  "version": "1.0.0",
+  "description": "",
+  "main": "particle-generator.js",
+  "devDependencies": {},
+  "scripts": {},
+  "author": "Elias Norstrom",
+  "license": "ISC"
+}
